@@ -1,0 +1,79 @@
+{
+  "active": true,
+  "address": [
+    {
+      "city": "\u4e0a\u6d77\u5e02",
+      "district": "\u9ec4\u57d4\u533a",
+      "line": [
+        "\u9a6c\u5f53\u8def190\u53f7"
+      ],
+      "period": {
+        "start": "1974-12-25"
+      },
+      "postalCode": "200000",
+      "type": "both",
+      "use": "home"
+    }
+  ],
+  "birthDate": "1974-12-25",
+  "deceasedBoolean": false,
+  "gender": "male",
+  "id": "ch-example",
+  "identifier": [
+    {
+      "assigner": {
+        "display": "\u5e02\u536b\u751f\u5c40"
+      },
+      "period": {
+        "start": "2001-05-06"
+      },
+      "system": "urn:oid:1.2.36.146.595.217.0.1",
+      "type": {
+        "coding": [
+          {
+            "code": "MR",
+            "system": "http://terminology.hl7.org/CodeSystem/v2-0203"
+          }
+        ]
+      },
+      "use": "usual",
+      "value": "3112219680806371X"
+    }
+  ],
+  "managingOrganization": {
+    "display": "\u4e0a\u6d77\u4e1c\u65b9\u533b\u9662",
+    "reference": "Organization/1"
+  },
+  "meta": {
+    "lastUpdated": "2016-05-16T00:55:52Z",
+    "tag": [
+      {
+        "code": "HTEST",
+        "display": "test health data",
+        "system": "http://terminology.hl7.org/CodeSystem/v3-ActReason"
+      }
+    ],
+    "versionId": "1"
+  },
+  "name": [
+    {
+      "text": "\u5f20\u65e0\u5fcc",
+      "use": "official"
+    }
+  ],
+  "resourceType": "Patient",
+  "telecom": [
+    {
+      "use": "home"
+    },
+    {
+      "system": "phone",
+      "use": "work",
+      "value": "18337177888"
+    }
+  ],
+  "text": {
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">\n      <table>\n        <tbody>\n          <tr>\n            <td>\u540d\u5b57</td>\n            <td>\u5f20\u65e0\u5fcc</td> </tr>\n          <tr>\n            <td>\u5730\u5740</td>\n            <td>\u4e0a\u6d77\u5e02\u9ec4\u57d4\u533a\u9a6c\u5f53\u8def190\u53f7, 1974\u5e7412\u670825\u65e5</td> \n          </tr>\n          <tr>\n            <td>\u8054\u7cfb\u65b9\u5f0f</td>\n            <td>\u4f4f\u5b85: \u4e0d\u8be6\u3002\u5de5\u4f5c: 18337177888</td> \n          </tr>\n          <tr>\n            <td>Id</td>\n            <td>MRN: 3112219680806371X (\u5e02\u536b\u751f\u5c40)</td> \n          </tr> \n        </tbody> \n      </table> \n    </div>",
+    "status": "generated"
+  }
+}

@@ -1,0 +1,81 @@
+{
+  "code": {
+    "coding": [
+      {
+        "code": "9269-2",
+        "display": "Glasgow coma score total",
+        "system": "http://loinc.org"
+      }
+    ],
+    "text": "Glasgow Coma Scale , (GCS)"
+  },
+  "derivedFrom": [
+    {
+      "display": "GCS form results",
+      "reference": "QuestionnaireResponse/gcs"
+    }
+  ],
+  "effectiveDateTime": "2014-12-11T04:44:16Z",
+  "id": "gcs-qa",
+  "meta": {
+    "tag": [
+      {
+        "code": "HTEST",
+        "display": "test health data",
+        "system": "http://terminology.hl7.org/CodeSystem/v3-ActReason"
+      }
+    ]
+  },
+  "referenceRange": [
+    {
+      "high": {
+        "code": "{score}",
+        "system": "http://unitsofmeasure.org",
+        "value": 8
+      },
+      "type": {
+        "text": "Severe TBI"
+      }
+    },
+    {
+      "high": {
+        "code": "{score}",
+        "system": "http://unitsofmeasure.org",
+        "value": 12
+      },
+      "low": {
+        "code": "{score}",
+        "system": "http://unitsofmeasure.org",
+        "value": 9
+      },
+      "type": {
+        "text": "Moderate TBI"
+      }
+    },
+    {
+      "low": {
+        "code": "{score}",
+        "system": "http://unitsofmeasure.org",
+        "value": 13
+      },
+      "type": {
+        "text": "Mild TBI"
+      }
+    }
+  ],
+  "resourceType": "Observation",
+  "status": "final",
+  "subject": {
+    "display": "Peter James Chalmers",
+    "reference": "Patient/example"
+  },
+  "text": {
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative with Details</b></p><p><b>id</b>: gcs-qa</p><p><b>status</b>: final</p><p><b>code</b>: Glasgow Coma Scale , (GCS) <span>(Details : {LOINC code '9269-2' = 'Glasgow coma score total', given as 'Glasgow coma score total'})</span></p><p><b>subject</b>: <a>Peter James Chalmers</a></p><p><b>effective</b>: 11/12/2014 4:44:16 AM</p><p><b>value</b>: 13 {score}<span> (Details: UCUM code {score} = '{score}')</span></p><blockquote><p><b>referenceRange</b></p><p><b>high</b>: 8 {score}<span> (Details: UCUM code {score} = '{score}')</span></p><p><b>type</b>: Severe TBI <span>(Details )</span></p></blockquote><blockquote><p><b>referenceRange</b></p><p><b>low</b>: 9 {score}<span> (Details: UCUM code {score} = '{score}')</span></p><p><b>high</b>: 12 {score}<span> (Details: UCUM code {score} = '{score}')</span></p><p><b>type</b>: Moderate TBI <span>(Details )</span></p></blockquote><blockquote><p><b>referenceRange</b></p><p><b>low</b>: 13 {score}<span> (Details: UCUM code {score} = '{score}')</span></p><p><b>type</b>: Mild TBI <span>(Details )</span></p></blockquote><p><b>derivedFrom</b>: <a>GCS form results</a></p></div>",
+    "status": "generated"
+  },
+  "valueQuantity": {
+    "code": "{score}",
+    "system": "http://unitsofmeasure.org",
+    "value": 13
+  }
+}

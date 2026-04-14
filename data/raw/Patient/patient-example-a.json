@@ -1,0 +1,79 @@
+{
+  "active": true,
+  "contact": [
+    {
+      "organization": {
+        "display": "Walt Disney Corporation",
+        "reference": "Organization/1"
+      },
+      "relationship": [
+        {
+          "coding": [
+            {
+              "code": "E",
+              "system": "http://terminology.hl7.org/CodeSystem/v2-0131"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "gender": "male",
+  "id": "pat1",
+  "identifier": [
+    {
+      "system": "urn:oid:0.1.2.3.4.5.6.7",
+      "type": {
+        "coding": [
+          {
+            "code": "MR",
+            "system": "http://terminology.hl7.org/CodeSystem/v2-0203"
+          }
+        ]
+      },
+      "use": "usual",
+      "value": "654321"
+    }
+  ],
+  "link": [
+    {
+      "other": {
+        "reference": "Patient/pat2"
+      },
+      "type": "seealso"
+    }
+  ],
+  "managingOrganization": {
+    "display": "ACME Healthcare, Inc",
+    "reference": "Organization/1"
+  },
+  "meta": {
+    "tag": [
+      {
+        "code": "HTEST",
+        "display": "test health data",
+        "system": "http://terminology.hl7.org/CodeSystem/v3-ActReason"
+      }
+    ]
+  },
+  "name": [
+    {
+      "family": "Donald",
+      "given": [
+        "Duck"
+      ],
+      "use": "official"
+    }
+  ],
+  "photo": [
+    {
+      "contentType": "image/gif",
+      "data": "R0lGODlhEwARAPcAAAAAAAAA/+9aAO+1AP/WAP/eAP/eCP/eEP/eGP/nAP/nCP/nEP/nIf/nKf/nUv/nWv/vAP/vCP/vEP/vGP/vIf/vKf/vMf/vOf/vWv/vY//va//vjP/3c//3lP/3nP//tf//vf///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////yH5BAEAAAEALAAAAAATABEAAAi+AAMIDDCgYMGBCBMSvMCQ4QCFCQcwDBGCA4cLDyEGECDxAoAQHjxwyKhQAMeGIUOSJJjRpIAGDS5wCDly4AALFlYOgHlBwwOSNydM0AmzwYGjBi8IHWoTgQYORg8QIGDAwAKhESI8HIDgwQaRDI1WXXAhK9MBBzZ8/XDxQoUFZC9IiCBh6wEHGz6IbNuwQoSpWxEgyLCXL8O/gAnylNlW6AUEBRIL7Og3KwQIiCXb9HsZQoIEUzUjNEiaNMKAAAA7"
+    }
+  ],
+  "resourceType": "Patient",
+  "text": {
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">\n      \n      <p>Patient Donald DUCK @ Acme Healthcare, Inc. MR = 654321</p>\n    \n    </div>",
+    "status": "generated"
+  }
+}

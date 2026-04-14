@@ -1,0 +1,48 @@
+{
+  "category": [
+    {
+      "coding": [
+        {
+          "code": "problem-list-item",
+          "display": "Problem List Item",
+          "system": "http://terminology.hl7.org/CodeSystem/condition-category"
+        }
+      ]
+    }
+  ],
+  "clinicalStatus": {
+    "coding": [
+      {
+        "code": "active",
+        "system": "http://terminology.hl7.org/CodeSystem/condition-clinical"
+      }
+    ]
+  },
+  "code": {
+    "coding": [
+      {
+        "code": "312824007",
+        "display": "Family history of cancer of colon",
+        "system": "http://snomed.info/sct"
+      }
+    ]
+  },
+  "id": "family-history",
+  "meta": {
+    "tag": [
+      {
+        "code": "HTEST",
+        "display": "test health data",
+        "system": "http://terminology.hl7.org/CodeSystem/v3-ActReason"
+      }
+    ]
+  },
+  "resourceType": "Condition",
+  "subject": {
+    "reference": "Patient/example"
+  },
+  "text": {
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">Family history of cancer of colon</div>",
+    "status": "generated"
+  }
+}

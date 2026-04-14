@@ -1,0 +1,45 @@
+{
+  "category": [
+    {
+      "coding": [
+        {
+          "code": "survey",
+          "display": "Survey",
+          "system": "http://terminology.hl7.org/CodeSystem/observation-category"
+        }
+      ],
+      "text": "AOE"
+    }
+  ],
+  "code": {
+    "coding": [
+      {
+        "code": "8665-2",
+        "display": "Date last menstrual period",
+        "system": "http://loinc.org"
+      }
+    ],
+    "text": "Date last menstrual period"
+  },
+  "effectiveDateTime": "2016-01-24",
+  "id": "date-lastmp",
+  "meta": {
+    "tag": [
+      {
+        "code": "HTEST",
+        "display": "test health data",
+        "system": "http://terminology.hl7.org/CodeSystem/v3-ActReason"
+      }
+    ]
+  },
+  "resourceType": "Observation",
+  "status": "final",
+  "subject": {
+    "reference": "Patient/pat2"
+  },
+  "text": {
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative with Details</b></p><p><b>id</b>: date-lastmp</p><p><b>status</b>: final</p><p><b>category</b>: AOE <span>(Details : {http://terminology.hl7.org/CodeSystem/observation-category code 'survey' = 'Survey', given as 'Survey'})</span></p><p><b>code</b>: Date last menstrual period <span>(Details : {LOINC code '8665-2' = 'Last menstrual period start date', given as 'Date last menstrual period'})</span></p><p><b>subject</b>: <a>Patient/pat2</a></p><p><b>effective</b>: 24/01/2016</p><p><b>value</b>: 30/12/2016</p></div>",
+    "status": "generated"
+  },
+  "valueDateTime": "2016-12-30"
+}

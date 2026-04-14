@@ -1,0 +1,70 @@
+{
+  "active": true,
+  "address": [
+    {
+      "line": [
+        "2222 Home Street"
+      ],
+      "use": "home"
+    }
+  ],
+  "birthDate": "1973-05-31",
+  "gender": "female",
+  "id": "mom",
+  "identifier": [
+    {
+      "system": "http://hl7.org/fhir/sid/us-ssn",
+      "type": {
+        "coding": [
+          {
+            "code": "SS",
+            "system": "http://terminology.hl7.org/CodeSystem/v2-0203"
+          }
+        ]
+      },
+      "value": "444222222"
+    }
+  ],
+  "link": [
+    {
+      "other": {
+        "reference": "RelatedPerson/newborn-mom"
+      },
+      "type": "seealso"
+    }
+  ],
+  "managingOrganization": {
+    "reference": "Organization/hl7"
+  },
+  "meta": {
+    "lastUpdated": "2012-05-29T23:45:32Z",
+    "tag": [
+      {
+        "code": "HTEST",
+        "display": "test health data",
+        "system": "http://terminology.hl7.org/CodeSystem/v3-ActReason"
+      }
+    ]
+  },
+  "name": [
+    {
+      "family": "Everywoman",
+      "given": [
+        "Eve"
+      ],
+      "use": "official"
+    }
+  ],
+  "resourceType": "Patient",
+  "telecom": [
+    {
+      "system": "phone",
+      "use": "work",
+      "value": "555-555-2003"
+    }
+  ],
+  "text": {
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative with Details</b></p><p><b>id</b>: mom</p><p><b>meta</b>: </p><p><b>identifier</b>: Social Security number = 444222222</p><p><b>active</b>: true</p><p><b>name</b>: Eve Everywoman (OFFICIAL)</p><p><b>telecom</b>: ph: 555-555-2003(WORK)</p><p><b>gender</b>: female</p><p><b>birthDate</b>: 31/05/1973</p><p><b>address</b>: 2222 Home Street (HOME)</p><p><b>managingOrganization</b>: <a>Organization/hl7</a></p><h3>Links</h3><table><tr><td>-</td><td><b>Other</b></td><td><b>Type</b></td></tr><tr><td>*</td><td><a>RelatedPerson/newborn-mom</a></td><td>seealso</td></tr></table></div>",
+    "status": "generated"
+  }
+}

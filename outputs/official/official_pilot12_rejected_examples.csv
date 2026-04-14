@@ -1,0 +1,8 @@
+resource_type,resource_id,rejection_reason
+Patient,animal,"Semantically strong but veterinary-specific, so it was not as representative for a general human pilot anchor set."
+Patient,pat3,"Acceptable candidate, but it depended on linked organization context and lost to the fully self-contained Patient selections."
+Observation,bmi,"Strong candidate, but omitted to avoid over-concentrating the six-slot Observation set on overlapping body-measure examples."
+Observation,f204,"Good numeric lab example, but glucose was preferred as the single pilot lab anchor because it is more universally familiar."
+Observation,656,"Clean numeric Observation, but the device-oriented coding and patient-as-performer pattern made it less general-purpose for a first pilot."
+Condition,family-history,"Low complexity, but less ideal as a direct Condition gold anchor because the semantics skew toward family-history context."
+Condition,f205,Not selected because differential-status semantics and extra asserter linkage make it more context-dependent than the chosen Conditions.

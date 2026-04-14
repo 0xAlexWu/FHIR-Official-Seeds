@@ -1,0 +1,114 @@
+{
+  "abatementDateTime": "2013-03-20",
+  "asserter": {
+    "reference": "Practitioner/f201"
+  },
+  "bodySite": [
+    {
+      "coding": [
+        {
+          "code": "181414000",
+          "display": "Kidney",
+          "system": "http://snomed.info/sct"
+        }
+      ]
+    }
+  ],
+  "category": [
+    {
+      "coding": [
+        {
+          "code": "55607006",
+          "display": "Problem",
+          "system": "http://snomed.info/sct"
+        },
+        {
+          "code": "problem-list-item",
+          "system": "http://terminology.hl7.org/CodeSystem/condition-category"
+        }
+      ]
+    }
+  ],
+  "clinicalStatus": {
+    "coding": [
+      {
+        "code": "inactive",
+        "system": "http://terminology.hl7.org/CodeSystem/condition-clinical"
+      }
+    ]
+  },
+  "code": {
+    "coding": [
+      {
+        "code": "36225005",
+        "display": "Acute renal insufficiency specified as due to procedure",
+        "system": "http://snomed.info/sct"
+      }
+    ]
+  },
+  "encounter": {
+    "display": "Roel's encounter on March elevanth",
+    "reference": "Encounter/f203"
+  },
+  "id": "f204",
+  "meta": {
+    "tag": [
+      {
+        "code": "HTEST",
+        "display": "test health data",
+        "system": "http://terminology.hl7.org/CodeSystem/v3-ActReason"
+      }
+    ]
+  },
+  "note": [
+    {
+      "text": "The patient is anuric."
+    }
+  ],
+  "onsetDateTime": "2013-03-11",
+  "recordedDate": "2013-03-11",
+  "resourceType": "Condition",
+  "severity": {
+    "coding": [
+      {
+        "code": "24484000",
+        "display": "Severe",
+        "system": "http://snomed.info/sct"
+      }
+    ]
+  },
+  "stage": [
+    {
+      "assessment": [
+        {
+          "display": "Genetic analysis master panel"
+        }
+      ],
+      "summary": {
+        "coding": [
+          {
+            "code": "14803004",
+            "display": "Temporary",
+            "system": "http://snomed.info/sct"
+          }
+        ]
+      }
+    }
+  ],
+  "subject": {
+    "display": "Roel",
+    "reference": "Patient/f201"
+  },
+  "text": {
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative with Details</b></p><p><b>id</b>: f204</p><p><b>clinicalStatus</b>: Inactive <span>(Details : {http://terminology.hl7.org/CodeSystem/condition-clinical code 'inactive' = 'Inactive)</span></p><p><b>verificationStatus</b>: Differential <span>(Details : {http://terminology.hl7.org/CodeSystem/condition-ver-status code 'differential' = 'Differential)</span></p><p><b>category</b>: Problem <span>(Details : {SNOMED CT code '55607006' = 'Problem', given as 'Problem'}; {http://terminology.hl7.org/CodeSystem/condition-category code 'problem-list-item' = 'Problem List Item)</span></p><p><b>severity</b>: Severe <span>(Details : {SNOMED CT code '24484000' = 'Severe', given as 'Severe'})</span></p><p><b>code</b>: Acute renal insufficiency specified as due to procedure <span>(Details : {SNOMED CT code '36225005' = 'Acute renal failure due to procedure', given as 'Acute renal insufficiency specified as due to procedure'})</span></p><p><b>bodySite</b>: Kidney <span>(Details : {SNOMED CT code '181414000' = 'Kidney', given as 'Kidney'})</span></p><p><b>subject</b>: <a>Roel</a></p><p><b>encounter</b>: <a>Roel's encounter on March elevanth</a></p><p><b>onset</b>: 11/03/2013</p><p><b>abatement</b>: 20/03/2013</p><p><b>recordedDate</b>: 11/03/2013</p><p><b>asserter</b>: <a>Practitioner/f201</a></p><h3>Stages</h3><table><tr><td>-</td><td><b>Summary</b></td><td><b>Assessment</b></td></tr><tr><td>*</td><td>Temporary <span>(Details : {SNOMED CT code '14803004' = 'Transitory', given as 'Temporary'})</span></td><td>Genetic analysis master panel</td></tr></table><p><b>note</b>: The patient is anuric.</p></div>",
+    "status": "generated"
+  },
+  "verificationStatus": {
+    "coding": [
+      {
+        "code": "differential",
+        "system": "http://terminology.hl7.org/CodeSystem/condition-ver-status"
+      }
+    ]
+  }
+}

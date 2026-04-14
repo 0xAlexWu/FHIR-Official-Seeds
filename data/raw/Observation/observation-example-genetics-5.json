@@ -1,0 +1,50 @@
+{
+  "code": {
+    "text": "PCR validation"
+  },
+  "extension": [
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/observation-sequelTo",
+      "valueReference": {
+        "display": "ObservationForGenetics profile example 1",
+        "reference": "Observation/example-genetics-1"
+      }
+    }
+  ],
+  "id": "example-genetics-5",
+  "issued": "2013-04-03T15:30:10+01:00",
+  "meta": {
+    "tag": [
+      {
+        "code": "HTEST",
+        "display": "test health data",
+        "system": "http://terminology.hl7.org/CodeSystem/v3-ActReason"
+      }
+    ]
+  },
+  "performer": [
+    {
+      "display": "Sequence Analysis Laboratory",
+      "reference": "Practitioner/example"
+    }
+  ],
+  "resourceType": "Observation",
+  "status": "final",
+  "subject": {
+    "display": "Molecular Lab Patient ID: HOSP-23456",
+    "reference": "Patient/example"
+  },
+  "text": {
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative with Details</b></p><p><b>id</b>: example-genetics-5</p><p><b>status</b>: final</p><p><b>code</b>: PCR validation <span>(Details )</span></p><p><b>subject</b>: <a>Molecular Lab Patient ID: HOSP-23456</a></p><p><b>issued</b>: 03/04/2013 3:30:10 PM</p><p><b>performer</b>: <a>Sequence Analysis Laboratory</a></p><p><b>value</b>: Negative <span>(Details : {SNOMED CT code '260385009' = 'Negative', given as 'Negative'})</span></p></div>",
+    "status": "generated"
+  },
+  "valueCodeableConcept": {
+    "coding": [
+      {
+        "code": "260385009",
+        "display": "Negative",
+        "system": "http://snomed.info/sct"
+      }
+    ]
+  }
+}

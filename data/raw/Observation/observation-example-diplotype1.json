@@ -1,0 +1,59 @@
+{
+  "code": {
+    "coding": [
+      {
+        "code": "363779003",
+        "display": "Genotype determination",
+        "system": "http://snomed.info/sct"
+      }
+    ],
+    "text": "Diplotype Call"
+  },
+  "derivedFrom": [
+    {
+      "reference": "Observation/example-haplotype1"
+    },
+    {
+      "reference": "Observation/example-haplotype2"
+    }
+  ],
+  "extension": [
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/observation-geneticsGene",
+      "valueCodeableConcept": {
+        "coding": [
+          {
+            "code": "2623",
+            "display": "CYP2C9",
+            "system": "http://www.genenames.org"
+          }
+        ]
+      }
+    }
+  ],
+  "id": "example-diplotype1",
+  "issued": "2013-04-03T15:30:10+01:00",
+  "meta": {
+    "tag": [
+      {
+        "code": "HTEST",
+        "display": "test health data",
+        "system": "http://terminology.hl7.org/CodeSystem/v3-ActReason"
+      }
+    ]
+  },
+  "resourceType": "Observation",
+  "specimen": {
+    "display": "Molecular Specimen ID: MLD45-Z4-1234",
+    "reference": "Specimen/genetics-example1-somatic"
+  },
+  "status": "final",
+  "subject": {
+    "display": "J*********** C***********",
+    "reference": "Patient/727127"
+  },
+  "text": {
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative with Details</b></p><p><b>id</b>: example-diplotype1</p><p><b>status</b>: final</p><p><b>code</b>: Diplotype Call <span>(Details : {SNOMED CT code '363779003' = 'Genotype determination', given as 'Genotype determination'})</span></p><p><b>subject</b>: <a>J*********** C***********</a></p><p><b>issued</b>: 03/04/2013 3:30:10 PM</p><p><b>specimen</b>: <a>Molecular Specimen ID: MLD45-Z4-1234</a></p><p><b>derivedFrom</b>: </p><ul><li><a>Observation/example-haplotype1</a></li><li><a>Observation/example-haplotype2</a></li></ul></div>",
+    "status": "generated"
+  }
+}

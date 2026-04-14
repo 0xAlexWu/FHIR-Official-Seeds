@@ -1,0 +1,7 @@
+pair_id,seed_id,resource_type,flag_type,flag_reason
+official-pair-004,official-pilot12-02,Patient,sparse_seed,"The proband seed has no patient name, so the variant is necessarily limited to gender, birth date, identifier, and active status."
+official-pair-006,official-pilot12-03,Patient,near_duplicate_variant,"The newborn seed exposes only gender and birth date, so the two variants are intentionally close."
+official-pair-007,official-pilot12-04,Observation,possible_hallucination,The floating-point height value is awkward; review first to ensure no downstream cleanup silently normalizes the number.
+official-pair-008,official-pilot12-04,Observation,style_uncertainty,"The exact numeric precision is faithful to the seed but slightly unnatural to read, so this variant is worth an editorial check."
+official-pair-018,official-pilot12-09,Observation,context_leakage,The glucose seed includes linked subject and performer references; confirm the generated text does not imply extra linked-resource facts.
+official-pair-019,official-pilot12-10,Condition,possible_omission,The concise stroke variant omits the explicit onset date even though the seed includes it.

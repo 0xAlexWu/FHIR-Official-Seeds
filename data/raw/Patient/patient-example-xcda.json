@@ -1,0 +1,47 @@
+{
+  "active": true,
+  "birthDate": "1932-09-24",
+  "gender": "male",
+  "id": "xcda",
+  "identifier": [
+    {
+      "system": "urn:oid:2.16.840.1.113883.19.5",
+      "type": {
+        "coding": [
+          {
+            "code": "MR",
+            "system": "http://terminology.hl7.org/CodeSystem/v2-0203"
+          }
+        ]
+      },
+      "use": "usual",
+      "value": "12345"
+    }
+  ],
+  "managingOrganization": {
+    "display": "Good Health Clinic",
+    "reference": "Organization/2.16.840.1.113883.19.5"
+  },
+  "meta": {
+    "tag": [
+      {
+        "code": "HTEST",
+        "display": "test health data",
+        "system": "http://terminology.hl7.org/CodeSystem/v3-ActReason"
+      }
+    ]
+  },
+  "name": [
+    {
+      "family": "Levin",
+      "given": [
+        "Henry"
+      ]
+    }
+  ],
+  "resourceType": "Patient",
+  "text": {
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">\n      \n      <p>Henry Levin the 7th</p>\n    \n    </div>",
+    "status": "generated"
+  }
+}

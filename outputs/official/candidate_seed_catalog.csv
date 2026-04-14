@@ -1,0 +1,100 @@
+candidate_id,resource_type,resource_id,source_file_or_example_name,json_valid,likely_numeric,has_value,has_unit,needs_linked_context,complexity_guess,good_for_pairing,review_notes
+official-patient-0001,Patient,,json-edge-cases.json,true,,,,true,high,false,light linked context only
+official-patient-0002,Patient,pat1,patient-example-a.json,true,,,,true,medium,false,"external refs: Organization/1, Patient/pat2"
+official-patient-0003,Patient,animal,patient-example-animal.json,true,,,,false,medium,true,clean baseline example
+official-patient-0004,Patient,pat2,patient-example-b.json,true,,,,true,medium,false,"external refs: Organization/1, Patient/pat1"
+official-patient-0005,Patient,pat3,patient-example-c.json,true,,,,true,medium,true,light linked context only
+official-patient-0006,Patient,ch-example,patient-example-chinese.json,true,,,,true,medium,true,light linked context only
+official-patient-0007,Patient,pat4,patient-example-d.json,true,,,,true,medium,true,light linked context only
+official-patient-0008,Patient,dicom,patient-example-dicom.json,true,,,,true,medium,true,light linked context only
+official-patient-0009,Patient,f001,patient-example-f001-pieter.json,true,,,,true,medium,true,light linked context only
+official-patient-0010,Patient,f201,patient-example-f201-roel.json,true,,,,true,medium,true,light linked context only
+official-patient-0011,Patient,ihe-pcd,patient-example-ihe-pcd.json,true,,,,false,low,true,clean baseline example
+official-patient-0012,Patient,infant-fetal,patient-example-infant-fetal.json,true,,,,false,medium,true,clean baseline example
+official-patient-0013,Patient,infant-mom,patient-example-infant-mom.json,true,,,,true,medium,false,external refs: Practitioner/21B
+official-patient-0014,Patient,infant-twin-1,patient-example-infant-twin-1.json,true,,,,false,high,false,clean baseline example
+official-patient-0015,Patient,infant-twin-2,patient-example-infant-twin-2.json,true,,,,false,high,false,clean baseline example
+official-patient-0016,Patient,mom,patient-example-mom.json,true,,,,true,medium,false,"external refs: Organization/hl7, RelatedPerson/newborn-mom"
+official-patient-0017,Patient,newborn,patient-example-newborn.json,true,,,,false,medium,true,clean baseline example
+official-patient-0018,Patient,proband,patient-example-proband.json,true,,,,false,low,true,clean baseline example
+official-patient-0019,Patient,xcda,patient-example-xcda.json,true,,,,true,medium,true,light linked context only
+official-patient-0020,Patient,xds,patient-example-xds.json,true,,,,true,medium,true,light linked context only
+official-patient-0021,Patient,example,patient-example.json,true,,,,true,medium,true,light linked context only
+official-patient-0022,Patient,genetics-example1,patient-genetics-example1.json,true,,,,true,medium,true,light linked context only
+official-patient-0023,Patient,glossy,patient-glossy-example.json,true,,,,true,high,false,"external refs: Organization/2, Practitioner/example"
+official-observation-0001,Observation,decimal,observation-decimal.json,true,true,true,true,false,medium,false,multi-component observation; likely numeric observation
+official-observation-0002,Observation,10minute-apgar-score,observation-example-10minute-apgar-score.json,true,true,true,true,true,high,false,light linked context only; multi-component observation; likely numeric observation
+official-observation-0003,Observation,1minute-apgar-score,observation-example-1minute-apgar-score.json,true,true,true,true,true,high,false,light linked context only; multi-component observation; likely numeric observation
+official-observation-0004,Observation,20minute-apgar-score,observation-example-20minute-apgar-score.json,true,true,true,true,true,high,false,light linked context only; multi-component observation; likely numeric observation
+official-observation-0005,Observation,2minute-apgar-score,observation-example-2minute-apgar-score.json,true,true,true,true,true,high,false,light linked context only; multi-component observation; likely numeric observation
+official-observation-0006,Observation,5minute-apgar-score,observation-example-5minute-apgar-score.json,true,true,true,true,true,high,false,light linked context only; multi-component observation; likely numeric observation
+official-observation-0007,Observation,example-TPMT-diplotype,observation-example-TPMT-diplotype.json,true,false,true,false,true,high,false,"external refs: Observation/example-TPMT-haplotype-one, Observation/example-TPMT-haplotype-two, Patient/example"
+official-observation-0008,Observation,example-TPMT-haplotype-one,observation-example-TPMT-haplotype-one.json,true,false,true,false,true,high,false,"external refs: MolecularSequence/example-TPMT-one, Patient/example"
+official-observation-0009,Observation,example-TPMT-haplotype-two,observation-example-TPMT-haplotype-two.json,true,false,true,false,true,high,false,"external refs: MolecularSequence/example-TPMT-two, Patient/example"
+official-observation-0010,Observation,abdo-tender,observation-example-abdo-tender.json,true,false,true,false,true,medium,false,"external refs: Encounter/example, Patient/example"
+official-observation-0011,Observation,alcohol-type,observation-example-alcohol-type.json,true,false,true,false,true,medium,false,light linked context only; multi-component observation
+official-observation-0012,Observation,bgpanel,observation-example-bgpanel.json,true,false,false,false,true,high,false,"external refs: Observation/bloodgroup, Observation/rhstatus, Patient/infant; panel/member relationship present; missing direct value"
+official-observation-0013,Observation,bloodgroup,observation-example-bloodgroup.json,true,false,true,false,true,medium,false,light linked context only
+official-observation-0014,Observation,blood-pressure-cancel,observation-example-bloodpressure-cancel.json,true,false,false,false,true,high,false,light linked context only; multi-component observation; missing direct value
+official-observation-0015,Observation,blood-pressure-dar,observation-example-bloodpressure-dar.json,true,true,true,true,true,high,false,light linked context only; multi-component observation; likely numeric observation
+official-observation-0016,Observation,blood-pressure,observation-example-bloodpressure.json,true,true,true,true,true,high,false,light linked context only; multi-component observation; likely numeric observation
+official-observation-0017,Observation,bmd,observation-example-bmd.json,true,true,true,true,true,medium,true,light linked context only; likely numeric observation
+official-observation-0018,Observation,bmi-using-related,observation-example-bmi-using-related.json,true,true,true,true,true,high,false,"external refs: Observation/bodyheight, Observation/example, Patient/example; likely numeric observation"
+official-observation-0019,Observation,bmi,observation-example-bmi.json,true,true,true,true,true,medium,true,light linked context only; likely numeric observation
+official-observation-0020,Observation,body-height,observation-example-body-height.json,true,true,true,true,true,medium,true,light linked context only; likely numeric observation
+official-observation-0021,Observation,body-length,observation-example-body-length.json,true,true,true,true,true,medium,true,light linked context only; likely numeric observation
+official-observation-0022,Observation,body-temperature,observation-example-body-temperature.json,true,true,true,true,true,medium,true,light linked context only; likely numeric observation
+official-observation-0023,Observation,clinical-gender,observation-example-clinical-gender.json,true,false,true,false,true,medium,false,"external refs: Encounter/example, Patient/example"
+official-observation-0024,Observation,date-lastmp,observation-example-date-lastmp.json,true,false,true,false,true,medium,false,light linked context only
+official-observation-0025,Observation,example-diplotype1,observation-example-diplotype1.json,true,false,false,false,true,high,false,"external refs: Observation/example-haplotype1, Observation/example-haplotype2, Patient/727127; missing direct value"
+official-observation-0026,Observation,eye-color,observation-example-eye-color.json,true,false,true,false,true,medium,false,light linked context only
+official-observation-0027,Observation,f001,observation-example-f001-glucose.json,true,true,true,true,true,medium,true,light linked context only; likely numeric observation
+official-observation-0028,Observation,f002,observation-example-f002-excess.json,true,true,true,true,true,medium,true,light linked context only; likely numeric observation
+official-observation-0029,Observation,f003,observation-example-f003-co2.json,true,true,true,true,true,medium,true,light linked context only; likely numeric observation
+official-observation-0030,Observation,f004,observation-example-f004-erythrocyte.json,true,true,true,true,true,medium,true,light linked context only; likely numeric observation
+official-observation-0031,Observation,f005,observation-example-f005-hemoglobin.json,true,true,true,true,true,medium,true,light linked context only; likely numeric observation
+official-observation-0032,Observation,f202,observation-example-f202-temperature.json,true,true,true,true,true,medium,true,light linked context only; likely numeric observation
+official-observation-0033,Observation,f203,observation-example-f203-bicarbonate.json,true,true,true,true,true,medium,true,light linked context only; likely numeric observation
+official-observation-0034,Observation,f204,observation-example-f204-creatinine.json,true,true,true,true,true,medium,true,light linked context only; likely numeric observation
+official-observation-0035,Observation,f205,observation-example-f205-egfr.json,true,true,true,true,true,high,false,light linked context only; multi-component observation; likely numeric observation
+official-observation-0036,Observation,f206,observation-example-f206-staphylococcus.json,true,false,true,false,true,medium,false,light linked context only
+official-observation-0037,Observation,example-genetics-1,observation-example-genetics-1.json,true,false,true,false,true,high,false,"external refs: Patient/example, Practitioner/example, Specimen/genetics-example1-somatic"
+official-observation-0038,Observation,example-genetics-2,observation-example-genetics-2.json,true,false,true,false,true,high,false,"external refs: Observation/example-genetics-1, Patient/example, Practitioner/example; multi-component observation"
+official-observation-0039,Observation,example-genetics-3,observation-example-genetics-3.json,true,false,false,false,true,high,false,"external refs: Observation/example-genetics-1, Patient/example, Practitioner/example; missing direct value"
+official-observation-0040,Observation,example-genetics-4,observation-example-genetics-4.json,true,false,false,false,true,high,false,"external refs: Observation/example-genetics-1, Observation/example-genetics-2, Observation/example-genetics-3; panel/member relationship present; missing direct value"
+official-observation-0041,Observation,example-genetics-5,observation-example-genetics-5.json,true,false,true,false,true,high,false,"external refs: Observation/example-genetics-1, Patient/example, Practitioner/example"
+official-observation-0042,Observation,example-genetics-brcapat,observation-example-genetics-brcapat.json,true,false,false,false,true,medium,false,light linked context only; missing direct value
+official-observation-0043,Observation,gcs-qa,observation-example-glasgow-qa.json,true,true,true,true,true,high,false,"external refs: Patient/example, QuestionnaireResponse/gcs; likely numeric observation"
+official-observation-0044,Observation,glasgow,observation-example-glasgow.json,true,true,true,true,true,medium,false,light linked context only; multi-component observation; likely numeric observation
+official-observation-0045,Observation,example-haplotype1,observation-example-haplotype1.json,true,false,true,false,true,high,false,"external refs: MolecularSequence/example-pgx-1, MolecularSequence/example-pgx-2, Patient/727127"
+official-observation-0046,Observation,example-haplotype2,observation-example-haplotype2.json,true,false,true,false,true,high,false,"external refs: MolecularSequence/example-pgx-1, MolecularSequence/example-pgx-2, Patient/727127"
+official-observation-0047,Observation,head-circumference,observation-example-head-circumference.json,true,true,true,true,true,medium,true,light linked context only; likely numeric observation
+official-observation-0048,Observation,heart-rate,observation-example-heart-rate.json,true,true,true,true,true,medium,true,light linked context only; likely numeric observation
+official-observation-0049,Observation,herd1,observation-example-herd1.json,true,true,true,true,true,medium,false,"external refs: Group/herd1, Specimen/pooled-serum; likely numeric observation"
+official-observation-0050,Observation,map-sitting,observation-example-map-sitting.json,true,true,true,true,true,high,false,"external refs: Encounter/example, Patient/example; likely numeric observation"
+official-observation-0051,Observation,mbp,observation-example-mbp.json,true,true,true,true,true,medium,true,light linked context only; likely numeric observation
+official-observation-0052,Observation,example-phenotype,observation-example-phenotype.json,true,false,true,false,true,high,false,"external refs: Observation/example-diplotype1, Patient/727127, Specimen/genetics-example1-somatic"
+official-observation-0053,Observation,respiratory-rate,observation-example-respiratory-rate.json,true,true,true,true,true,medium,true,light linked context only; likely numeric observation
+official-observation-0054,Observation,rhstatus,observation-example-rhstatus.json,true,false,true,false,true,medium,false,light linked context only
+official-observation-0055,Observation,ekg,observation-example-sample-data.json,true,true,true,false,true,high,false,light linked context only; multi-component observation; likely numeric observation; numeric-style value without clear unit
+official-observation-0056,Observation,satO2,observation-example-satO2.json,true,true,true,true,true,medium,false,"external refs: DeviceMetric/example, Patient/example, Procedure/ob; likely numeric observation"
+official-observation-0057,Observation,secondsmoke,observation-example-secondsmoke.json,true,false,true,false,true,medium,false,light linked context only
+official-observation-0058,Observation,656,observation-example-spirometry.json,true,true,true,true,true,medium,true,light linked context only; likely numeric observation
+official-observation-0059,Observation,trachcare,observation-example-trachcare.json,true,false,true,false,true,medium,false,"external refs: Patient/infant, Patient/infant-mom"
+official-observation-0060,Observation,unsat,observation-example-unsat.json,true,false,false,false,true,medium,false,light linked context only; missing direct value
+official-observation-0061,Observation,vitals-panel,observation-example-vitals-panel.json,true,false,false,false,true,high,false,"external refs: Observation/blood-pressure, Observation/body-temperature, Observation/heart-rate; panel/member relationship present; missing direct value"
+official-observation-0062,Observation,vomiting,observation-example-vomiting.json,true,false,true,false,true,medium,false,light linked context only
+official-observation-0063,Observation,vp-oyster,observation-example-vp-oyster.json,true,false,true,false,true,medium,false,light linked context only
+official-observation-0064,Observation,example,observation-example.json,true,true,true,true,true,medium,false,"external refs: Encounter/example, Patient/example; likely numeric observation"
+official-condition-0001,Condition,f001,condition-example-f001-heart.json,true,,,,true,medium,false,"external refs: Encounter/f001, Patient/f001"
+official-condition-0002,Condition,f002,condition-example-f002-lung.json,true,,,,true,medium,false,"external refs: Encounter/f002, Patient/f001"
+official-condition-0003,Condition,f003,condition-example-f003-abscess.json,true,,,,true,medium,false,"external refs: Encounter/f003, Patient/f001"
+official-condition-0004,Condition,f201,condition-example-f201-fever.json,true,,,,true,medium,false,"external refs: Encounter/f201, Observation/f202, Patient/f201"
+official-condition-0005,Condition,f202,condition-example-f202-malignancy.json,true,,,,true,medium,false,"external refs: DiagnosticReport/f201, Patient/f201"
+official-condition-0006,Condition,f203,condition-example-f203-sepsis.json,true,,,,true,medium,false,"external refs: DiagnosticReport/f202, Encounter/f203, Patient/f201"
+official-condition-0007,Condition,f204,condition-example-f204-renal.json,true,,,,true,medium,false,"external refs: Encounter/f203, Patient/f201, Practitioner/f201"
+official-condition-0008,Condition,f205,condition-example-f205-infection.json,true,,,,true,medium,true,light linked context only
+official-condition-0009,Condition,family-history,condition-example-family-history.json,true,,,,true,low,true,light linked context only
+official-condition-0010,Condition,stroke,condition-example-stroke.json,true,,,,true,medium,true,light linked context only
+official-condition-0011,Condition,example,condition-example.json,true,,,,true,medium,true,light linked context only
+official-condition-0012,Condition,example2,condition-example2.json,true,,,,true,medium,true,light linked context only

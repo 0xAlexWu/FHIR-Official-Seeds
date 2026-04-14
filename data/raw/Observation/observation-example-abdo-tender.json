@@ -1,0 +1,62 @@
+{
+  "category": [
+    {
+      "coding": [
+        {
+          "code": "exam",
+          "display": "Exam",
+          "system": "http://terminology.hl7.org/CodeSystem/observation-category"
+        }
+      ]
+    }
+  ],
+  "code": {
+    "coding": [
+      {
+        "code": "43478001",
+        "display": "Abdominal tenderness (finding)",
+        "system": "http://snomed.info/sct"
+      }
+    ],
+    "text": "Abdominal tenderness"
+  },
+  "effectivePeriod": {
+    "start": "2018-04-02T10:30:10+01:00"
+  },
+  "encounter": {
+    "reference": "Encounter/example"
+  },
+  "id": "abdo-tender",
+  "interpretation": [
+    {
+      "coding": [
+        {
+          "code": "A",
+          "display": "Abnormal",
+          "system": "http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation"
+        }
+      ],
+      "text": "Abnormal"
+    }
+  ],
+  "issued": "2018-04-03T15:30:10+01:00",
+  "meta": {
+    "tag": [
+      {
+        "code": "HTEST",
+        "display": "test health data",
+        "system": "http://terminology.hl7.org/CodeSystem/v3-ActReason"
+      }
+    ]
+  },
+  "resourceType": "Observation",
+  "status": "final",
+  "subject": {
+    "reference": "Patient/example"
+  },
+  "text": {
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative with Details</b></p><p><b>id</b>: abdo-tender</p><p><b>status</b>: final</p><p><b>category</b>: Exam <span>(Details : {http://terminology.hl7.org/CodeSystem/observation-category code 'exam' = 'Exam', given as 'Exam'})</span></p><p><b>code</b>: Abdominal tenderness <span>(Details : {SNOMED CT code '43478001' = 'Abdominal tenderness', given as 'Abdominal tenderness (finding)'})</span></p><p><b>subject</b>: <a>Patient/example</a></p><p><b>encounter</b>: <a>Encounter/example</a></p><p><b>effective</b>: 02/04/2018 10:30:10 AM --&gt; (ongoing)</p><p><b>issued</b>: 03/04/2018 3:30:10 PM</p><p><b>value</b>: true</p><p><b>interpretation</b>: Abnormal <span>(Details : {http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation code 'A' = 'Abnormal', given as 'Abnormal'})</span></p></div>",
+    "status": "generated"
+  },
+  "valueBoolean": true
+}

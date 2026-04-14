@@ -1,0 +1,12 @@
+metric,count
+total_observations,64
+json_valid,64
+likely_numeric_true,35
+has_value_true,56
+has_unit_true,34
+numeric_with_value_and_unit,34
+needs_linked_context_true,63
+low_complexity,0
+medium_complexity,37
+high_complexity,27
+good_for_pairing_true,18

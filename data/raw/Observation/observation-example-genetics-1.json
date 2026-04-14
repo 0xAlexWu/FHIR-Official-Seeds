@@ -1,0 +1,81 @@
+{
+  "code": {
+    "coding": [
+      {
+        "code": "55233-1",
+        "display": "Genetic analysis master panel-- This is the parent OBR for the panel holding all of the associated observations that can be reported with a molecular genetics analysis result.",
+        "system": "http://loinc.org"
+      }
+    ]
+  },
+  "extension": [
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/observation-geneticsGene",
+      "valueCodeableConcept": {
+        "coding": [
+          {
+            "code": "3236",
+            "display": "EGFR",
+            "system": "http://www.genenames.org"
+          }
+        ]
+      }
+    },
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/observation-geneticsDNARegionName",
+      "valueString": "Exon 21"
+    },
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/observation-geneticsGenomicSourceClass",
+      "valueCodeableConcept": {
+        "coding": [
+          {
+            "code": "LA6684-0",
+            "display": "somatic",
+            "system": "http://loinc.org"
+          }
+        ]
+      }
+    }
+  ],
+  "id": "example-genetics-1",
+  "issued": "2013-04-03T15:30:10+01:00",
+  "meta": {
+    "tag": [
+      {
+        "code": "HTEST",
+        "display": "test health data",
+        "system": "http://terminology.hl7.org/CodeSystem/v3-ActReason"
+      }
+    ]
+  },
+  "performer": [
+    {
+      "display": "Molecular Diagnostics Laboratory",
+      "reference": "Practitioner/example"
+    }
+  ],
+  "resourceType": "Observation",
+  "specimen": {
+    "display": "Molecular Specimen ID: MLD45-Z4-1234",
+    "reference": "Specimen/genetics-example1-somatic"
+  },
+  "status": "final",
+  "subject": {
+    "display": "Molecular Lab Patient ID: HOSP-23456",
+    "reference": "Patient/example"
+  },
+  "text": {
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative with Details</b></p><p><b>id</b>: example-genetics-1</p><p><b>status</b>: final</p><p><b>code</b>: Genetic analysis master panel-- This is the parent OBR for the panel holding all of the associated observations that can be reported with a molecular genetics analysis result. <span>(Details : {LOINC code '55233-1' = 'Genetic analysis master panel - Blood or Tissue by Molecular genetics method', given as 'Genetic analysis master panel-- This is the parent OBR for the panel holding all of the associated observations that can be reported with a molecular genetics analysis result.'})</span></p><p><b>subject</b>: <a>Molecular Lab Patient ID: HOSP-23456</a></p><p><b>issued</b>: 03/04/2013 3:30:10 PM</p><p><b>performer</b>: <a>Molecular Diagnostics Laboratory</a></p><p><b>value</b>: Positive <span>(Details : {SNOMED CT code '10828004' = 'Positive', given as 'Positive'})</span></p><p><b>specimen</b>: <a>Molecular Specimen ID: MLD45-Z4-1234</a></p></div>",
+    "status": "generated"
+  },
+  "valueCodeableConcept": {
+    "coding": [
+      {
+        "code": "10828004",
+        "display": "Positive",
+        "system": "http://snomed.info/sct"
+      }
+    ]
+  }
+}

@@ -1,0 +1,98 @@
+{
+  "_birthDate": {
+    "extension": [
+      {
+        "url": "http://hl7.org/fhir/StructureDefinition/patient-birthTime",
+        "valueDateTime": "2017-05-15T17:11:30+01:00"
+      }
+    ]
+  },
+  "birthDate": "2017-05-15",
+  "contact": [
+    {
+      "name": {
+        "family": "Organa",
+        "given": [
+          "Leia"
+        ],
+        "use": "maiden"
+      },
+      "relationship": [
+        {
+          "coding": [
+            {
+              "code": "72705000",
+              "display": "Mother",
+              "system": "http://snomed.info/sct"
+            },
+            {
+              "code": "N",
+              "system": "http://terminology.hl7.org/CodeSystem/v2-0131"
+            },
+            {
+              "code": "MTH",
+              "system": "http://terminology.hl7.org/CodeSystem/v3-RoleCode"
+            }
+          ]
+        }
+      ],
+      "telecom": [
+        {
+          "system": "phone",
+          "use": "mobile",
+          "value": "+31201234567"
+        }
+      ]
+    }
+  ],
+  "extension": [
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/patient-mothersMaidenName",
+      "valueString": "Organa"
+    }
+  ],
+  "gender": "male",
+  "id": "infant-twin-2",
+  "identifier": [
+    {
+      "system": "http://coruscanthealth.org/main-hospital/patient-identifier",
+      "type": {
+        "coding": [
+          {
+            "code": "MR",
+            "system": "http://terminology.hl7.org/CodeSystem/v2-0203"
+          }
+        ]
+      },
+      "value": "MRN7465676978"
+    },
+    {
+      "system": "http://new-republic.gov/galactic-citizen-identifier",
+      "value": "7465676978"
+    }
+  ],
+  "meta": {
+    "tag": [
+      {
+        "code": "HTEST",
+        "display": "test health data",
+        "system": "http://terminology.hl7.org/CodeSystem/v3-ActReason"
+      }
+    ]
+  },
+  "multipleBirthInteger": 2,
+  "name": [
+    {
+      "family": "Solo",
+      "given": [
+        "Jacen"
+      ],
+      "use": "official"
+    }
+  ],
+  "resourceType": "Patient",
+  "text": {
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative with Details</b></p><p><b>id</b>: infant-twin-2</p><p><b>identifier</b>: Medical record number = MRN7465676978, 7465676978</p><p><b>name</b>: Jacen Solo (OFFICIAL)</p><p><b>gender</b>: male</p><p><b>birthDate</b>: 15/05/2017</p><p><b>multipleBirth</b>: 2</p><h3>Contacts</h3><table><tr><td>-</td><td><b>Relationship</b></td><td><b>Name</b></td><td><b>Telecom</b></td></tr><tr><td>*</td><td>Mother <span>(Details : {SNOMED CT code '72705000' = 'Mother', given as 'Mother'}; {http://terminology.hl7.org/CodeSystem/v2-0131 code 'N' = 'Next-of-Kin; {http://terminology.hl7.org/CodeSystem/v3-RoleCode code 'MTH' = 'mother)</span></td><td>Leia Organa (MAIDEN)</td><td>ph: +31201234567(MOBILE)</td></tr></table></div>",
+    "status": "generated"
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "code": {
+    "text": "eye color"
+  },
+  "effectiveDateTime": "2016-05-18",
+  "id": "eye-color",
+  "meta": {
+    "tag": [
+      {
+        "code": "HTEST",
+        "display": "test health data",
+        "system": "http://terminology.hl7.org/CodeSystem/v3-ActReason"
+      }
+    ]
+  },
+  "resourceType": "Observation",
+  "status": "final",
+  "subject": {
+    "reference": "Patient/example"
+  },
+  "text": {
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative with Details</b></p><p><b>id</b>: eye-color</p><p><b>status</b>: final</p><p><b>code</b>: eye color <span>(Details )</span></p><p><b>subject</b>: <a>Patient/example</a></p><p><b>effective</b>: 18/05/2016</p><p><b>value</b>: blue</p></div>",
+    "status": "generated"
+  },
+  "valueString": "blue"
+}

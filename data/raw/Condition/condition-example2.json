@@ -1,0 +1,60 @@
+{
+  "category": [
+    {
+      "coding": [
+        {
+          "code": "problem-list-item",
+          "display": "Problem List Item",
+          "system": "http://terminology.hl7.org/CodeSystem/condition-category"
+        }
+      ]
+    }
+  ],
+  "clinicalStatus": {
+    "coding": [
+      {
+        "code": "active",
+        "system": "http://terminology.hl7.org/CodeSystem/condition-clinical"
+      }
+    ]
+  },
+  "code": {
+    "text": "Asthma"
+  },
+  "id": "example2",
+  "meta": {
+    "tag": [
+      {
+        "code": "HTEST",
+        "display": "test health data",
+        "system": "http://terminology.hl7.org/CodeSystem/v3-ActReason"
+      }
+    ]
+  },
+  "onsetString": "approximately November 2012",
+  "resourceType": "Condition",
+  "severity": {
+    "coding": [
+      {
+        "code": "255604002",
+        "display": "Mild",
+        "system": "http://snomed.info/sct"
+      }
+    ]
+  },
+  "subject": {
+    "reference": "Patient/example"
+  },
+  "text": {
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">Mild Asthma (Date: 12-Nov 2012)</div>",
+    "status": "generated"
+  },
+  "verificationStatus": {
+    "coding": [
+      {
+        "code": "confirmed",
+        "system": "http://terminology.hl7.org/CodeSystem/condition-ver-status"
+      }
+    ]
+  }
+}
