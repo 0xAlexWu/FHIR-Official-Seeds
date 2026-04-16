@@ -1,0 +1,724 @@
+You are acting as an external reviewer in a clinical-data-to-FHIR pairing evaluation workflow.
+
+You will review multiple candidate paired samples.
+Apply the same scoring rubric independently to each item.
+Do not compare items with each other.
+Judge each pair only on its own merits.
+
+For each item, return:
+- pair_id
+- faithfulness
+- unsupported_fact
+- omission
+- naturalness
+- context_leakage
+- short_rationale
+- flag_type
+
+Scoring rubric:
+- faithfulness: 1 = faithful, 0 = not faithful
+- unsupported_fact: 1 = yes, 0 = no
+- omission: 1 = yes, 0 = no
+- naturalness: 1 to 5
+- context_leakage: 1 = yes, 0 = no
+
+Allowed flag_type values:
+- none
+- possible_hallucination
+- possible_omission
+- awkward_input
+- context_leakage
+- style_uncertainty
+- other
+
+Review principles:
+1. Only judge alignment between the shown input text and the shown target FHIR JSON.
+2. Do not assume facts from linked resources unless explicitly present in the shown target JSON.
+3. Do not reward unsupported extra detail.
+4. Be conservative about unsupported facts.
+5. Be conservative about omission of core information.
+6. If the target is sparse, do not punish the input for not containing unavailable details.
+
+Return only a JSON array.
+Do not include markdown.
+Do not include any text before or after the JSON array.
+
+ITEM 1
+pair_id: official-pair-011
+resource_type: Observation
+input_style: concise_clinical
+input_text:
+Final heart rate: 44 beats/minute.
+target_fhir_json:
+{
+  "category": [
+    {
+      "coding": [
+        {
+          "code": "vital-signs",
+          "display": "Vital Signs",
+          "system": "http://terminology.hl7.org/CodeSystem/observation-category"
+        }
+      ],
+      "text": "Vital Signs"
+    }
+  ],
+  "code": {
+    "coding": [
+      {
+        "code": "8867-4",
+        "display": "Heart rate",
+        "system": "http://loinc.org"
+      }
+    ],
+    "text": "Heart rate"
+  },
+  "effectiveDateTime": "1999-07-02",
+  "id": "heart-rate",
+  "meta": {
+    "profile": [
+      "http://hl7.org/fhir/StructureDefinition/vitalsigns"
+    ],
+    "tag": [
+      {
+        "code": "HTEST",
+        "display": "test health data",
+        "system": "http://terminology.hl7.org/CodeSystem/v3-ActReason"
+      }
+    ]
+  },
+  "resourceType": "Observation",
+  "status": "final",
+  "subject": {
+    "reference": "Patient/example"
+  },
+  "text": {
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative with Details</b></p><p><b>id</b>: heart-rate</p><p><b>meta</b>: </p><p><b>status</b>: final</p><p><b>category</b>: Vital Signs <span>(Details : {http://terminology.hl7.org/CodeSystem/observation-category code 'vital-signs' = 'Vital Signs', given as 'Vital Signs'})</span></p><p><b>code</b>: Heart rate <span>(Details : {LOINC code '8867-4' = 'Heart rate', given as 'Heart rate'})</span></p><p><b>subject</b>: <a>Patient/example</a></p><p><b>effective</b>: 02/07/1999</p><p><b>value</b>: 44 beats/minute<span> (Details: UCUM code /min = '/min')</span></p></div>",
+    "status": "generated"
+  },
+  "valueQuantity": {
+    "code": "/min",
+    "system": "http://unitsofmeasure.org",
+    "unit": "beats/minute",
+    "value": 44
+  }
+}
+
+
+ITEM 2
+pair_id: official-pair-012
+resource_type: Observation
+input_style: semi_structured
+input_text:
+Observation: Heart rate | Status: final | Value: 44 beats/minute | Effective date: 1999-07-02
+target_fhir_json:
+{
+  "category": [
+    {
+      "coding": [
+        {
+          "code": "vital-signs",
+          "display": "Vital Signs",
+          "system": "http://terminology.hl7.org/CodeSystem/observation-category"
+        }
+      ],
+      "text": "Vital Signs"
+    }
+  ],
+  "code": {
+    "coding": [
+      {
+        "code": "8867-4",
+        "display": "Heart rate",
+        "system": "http://loinc.org"
+      }
+    ],
+    "text": "Heart rate"
+  },
+  "effectiveDateTime": "1999-07-02",
+  "id": "heart-rate",
+  "meta": {
+    "profile": [
+      "http://hl7.org/fhir/StructureDefinition/vitalsigns"
+    ],
+    "tag": [
+      {
+        "code": "HTEST",
+        "display": "test health data",
+        "system": "http://terminology.hl7.org/CodeSystem/v3-ActReason"
+      }
+    ]
+  },
+  "resourceType": "Observation",
+  "status": "final",
+  "subject": {
+    "reference": "Patient/example"
+  },
+  "text": {
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative with Details</b></p><p><b>id</b>: heart-rate</p><p><b>meta</b>: </p><p><b>status</b>: final</p><p><b>category</b>: Vital Signs <span>(Details : {http://terminology.hl7.org/CodeSystem/observation-category code 'vital-signs' = 'Vital Signs', given as 'Vital Signs'})</span></p><p><b>code</b>: Heart rate <span>(Details : {LOINC code '8867-4' = 'Heart rate', given as 'Heart rate'})</span></p><p><b>subject</b>: <a>Patient/example</a></p><p><b>effective</b>: 02/07/1999</p><p><b>value</b>: 44 beats/minute<span> (Details: UCUM code /min = '/min')</span></p></div>",
+    "status": "generated"
+  },
+  "valueQuantity": {
+    "code": "/min",
+    "system": "http://unitsofmeasure.org",
+    "unit": "beats/minute",
+    "value": 44
+  }
+}
+
+
+ITEM 3
+pair_id: official-pair-013
+resource_type: Observation
+input_style: concise_clinical
+input_text:
+Final respiratory rate: 26 breaths/minute.
+target_fhir_json:
+{
+  "category": [
+    {
+      "coding": [
+        {
+          "code": "vital-signs",
+          "display": "Vital Signs",
+          "system": "http://terminology.hl7.org/CodeSystem/observation-category"
+        }
+      ],
+      "text": "Vital Signs"
+    }
+  ],
+  "code": {
+    "coding": [
+      {
+        "code": "9279-1",
+        "display": "Respiratory rate",
+        "system": "http://loinc.org"
+      }
+    ],
+    "text": "Respiratory rate"
+  },
+  "effectiveDateTime": "1999-07-02",
+  "id": "respiratory-rate",
+  "meta": {
+    "profile": [
+      "http://hl7.org/fhir/StructureDefinition/vitalsigns"
+    ],
+    "tag": [
+      {
+        "code": "HTEST",
+        "display": "test health data",
+        "system": "http://terminology.hl7.org/CodeSystem/v3-ActReason"
+      }
+    ]
+  },
+  "resourceType": "Observation",
+  "status": "final",
+  "subject": {
+    "reference": "Patient/example"
+  },
+  "text": {
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative with Details</b></p><p><b>id</b>: respiratory-rate</p><p><b>meta</b>: </p><p><b>status</b>: final</p><p><b>category</b>: Vital Signs <span>(Details : {http://terminology.hl7.org/CodeSystem/observation-category code 'vital-signs' = 'Vital Signs', given as 'Vital Signs'})</span></p><p><b>code</b>: Respiratory rate <span>(Details : {LOINC code '9279-1' = 'Respiratory rate', given as 'Respiratory rate'})</span></p><p><b>subject</b>: <a>Patient/example</a></p><p><b>effective</b>: 02/07/1999</p><p><b>value</b>: 26 breaths/minute<span> (Details: UCUM code /min = '/min')</span></p></div>",
+    "status": "generated"
+  },
+  "valueQuantity": {
+    "code": "/min",
+    "system": "http://unitsofmeasure.org",
+    "unit": "breaths/minute",
+    "value": 26
+  }
+}
+
+
+ITEM 4
+pair_id: official-pair-014
+resource_type: Observation
+input_style: semi_structured
+input_text:
+Observation: Respiratory rate | Status: final | Value: 26 breaths/minute | Effective date: 1999-07-02
+target_fhir_json:
+{
+  "category": [
+    {
+      "coding": [
+        {
+          "code": "vital-signs",
+          "display": "Vital Signs",
+          "system": "http://terminology.hl7.org/CodeSystem/observation-category"
+        }
+      ],
+      "text": "Vital Signs"
+    }
+  ],
+  "code": {
+    "coding": [
+      {
+        "code": "9279-1",
+        "display": "Respiratory rate",
+        "system": "http://loinc.org"
+      }
+    ],
+    "text": "Respiratory rate"
+  },
+  "effectiveDateTime": "1999-07-02",
+  "id": "respiratory-rate",
+  "meta": {
+    "profile": [
+      "http://hl7.org/fhir/StructureDefinition/vitalsigns"
+    ],
+    "tag": [
+      {
+        "code": "HTEST",
+        "display": "test health data",
+        "system": "http://terminology.hl7.org/CodeSystem/v3-ActReason"
+      }
+    ]
+  },
+  "resourceType": "Observation",
+  "status": "final",
+  "subject": {
+    "reference": "Patient/example"
+  },
+  "text": {
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative with Details</b></p><p><b>id</b>: respiratory-rate</p><p><b>meta</b>: </p><p><b>status</b>: final</p><p><b>category</b>: Vital Signs <span>(Details : {http://terminology.hl7.org/CodeSystem/observation-category code 'vital-signs' = 'Vital Signs', given as 'Vital Signs'})</span></p><p><b>code</b>: Respiratory rate <span>(Details : {LOINC code '9279-1' = 'Respiratory rate', given as 'Respiratory rate'})</span></p><p><b>subject</b>: <a>Patient/example</a></p><p><b>effective</b>: 02/07/1999</p><p><b>value</b>: 26 breaths/minute<span> (Details: UCUM code /min = '/min')</span></p></div>",
+    "status": "generated"
+  },
+  "valueQuantity": {
+    "code": "/min",
+    "system": "http://unitsofmeasure.org",
+    "unit": "breaths/minute",
+    "value": 26
+  }
+}
+
+
+ITEM 5
+pair_id: official-pair-015
+resource_type: Observation
+input_style: concise_clinical
+input_text:
+Final mean blood pressure: 80 mm[Hg].
+target_fhir_json:
+{
+  "category": [
+    {
+      "coding": [
+        {
+          "code": "vital-signs",
+          "display": "Vital Signs",
+          "system": "http://terminology.hl7.org/CodeSystem/observation-category"
+        }
+      ],
+      "text": "Vital Signs"
+    }
+  ],
+  "code": {
+    "coding": [
+      {
+        "code": "8478-0",
+        "display": "Mean blood pressure",
+        "system": "http://loinc.org"
+      }
+    ],
+    "text": "Mean blood pressure"
+  },
+  "effectiveDateTime": "1999-07-02",
+  "id": "mbp",
+  "meta": {
+    "tag": [
+      {
+        "code": "HTEST",
+        "display": "test health data",
+        "system": "http://terminology.hl7.org/CodeSystem/v3-ActReason"
+      }
+    ]
+  },
+  "resourceType": "Observation",
+  "status": "final",
+  "subject": {
+    "reference": "Patient/example"
+  },
+  "text": {
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative with Details</b></p><p><b>id</b>: mbp</p><p><b>status</b>: final</p><p><b>category</b>: Vital Signs <span>(Details : {http://terminology.hl7.org/CodeSystem/observation-category code 'vital-signs' = 'Vital Signs', given as 'Vital Signs'})</span></p><p><b>code</b>: Mean blood pressure <span>(Details : {LOINC code '8478-0' = 'Mean blood pressure', given as 'Mean blood pressure'})</span></p><p><b>subject</b>: <a>Patient/example</a></p><p><b>effective</b>: 02/07/1999</p><p><b>value</b>: 80 mm[Hg]<span> (Details: UCUM code mm[Hg] = 'mmHg')</span></p></div>",
+    "status": "generated"
+  },
+  "valueQuantity": {
+    "code": "mm[Hg]",
+    "system": "http://unitsofmeasure.org",
+    "unit": "mm[Hg]",
+    "value": 80
+  }
+}
+
+
+ITEM 6
+pair_id: official-pair-016
+resource_type: Observation
+input_style: semi_structured
+input_text:
+Observation: Mean blood pressure | Status: final | Value: 80 mm[Hg] | Effective date: 1999-07-02
+target_fhir_json:
+{
+  "category": [
+    {
+      "coding": [
+        {
+          "code": "vital-signs",
+          "display": "Vital Signs",
+          "system": "http://terminology.hl7.org/CodeSystem/observation-category"
+        }
+      ],
+      "text": "Vital Signs"
+    }
+  ],
+  "code": {
+    "coding": [
+      {
+        "code": "8478-0",
+        "display": "Mean blood pressure",
+        "system": "http://loinc.org"
+      }
+    ],
+    "text": "Mean blood pressure"
+  },
+  "effectiveDateTime": "1999-07-02",
+  "id": "mbp",
+  "meta": {
+    "tag": [
+      {
+        "code": "HTEST",
+        "display": "test health data",
+        "system": "http://terminology.hl7.org/CodeSystem/v3-ActReason"
+      }
+    ]
+  },
+  "resourceType": "Observation",
+  "status": "final",
+  "subject": {
+    "reference": "Patient/example"
+  },
+  "text": {
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative with Details</b></p><p><b>id</b>: mbp</p><p><b>status</b>: final</p><p><b>category</b>: Vital Signs <span>(Details : {http://terminology.hl7.org/CodeSystem/observation-category code 'vital-signs' = 'Vital Signs', given as 'Vital Signs'})</span></p><p><b>code</b>: Mean blood pressure <span>(Details : {LOINC code '8478-0' = 'Mean blood pressure', given as 'Mean blood pressure'})</span></p><p><b>subject</b>: <a>Patient/example</a></p><p><b>effective</b>: 02/07/1999</p><p><b>value</b>: 80 mm[Hg]<span> (Details: UCUM code mm[Hg] = 'mmHg')</span></p></div>",
+    "status": "generated"
+  },
+  "valueQuantity": {
+    "code": "mm[Hg]",
+    "system": "http://unitsofmeasure.org",
+    "unit": "mm[Hg]",
+    "value": 80
+  }
+}
+
+
+ITEM 7
+pair_id: official-pair-017
+resource_type: Observation
+input_style: concise_clinical
+input_text:
+Final blood glucose observation: 6.3 mmol/l.
+target_fhir_json:
+{
+  "code": {
+    "coding": [
+      {
+        "code": "15074-8",
+        "display": "Glucose [Moles/volume] in Blood",
+        "system": "http://loinc.org"
+      }
+    ]
+  },
+  "effectivePeriod": {
+    "start": "2013-04-02T09:30:10+01:00"
+  },
+  "id": "f001",
+  "identifier": [
+    {
+      "system": "http://www.bmc.nl/zorgportal/identifiers/observations",
+      "use": "official",
+      "value": "6323"
+    }
+  ],
+  "interpretation": [
+    {
+      "coding": [
+        {
+          "code": "H",
+          "display": "High",
+          "system": "http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation"
+        }
+      ]
+    }
+  ],
+  "issued": "2013-04-03T15:30:10+01:00",
+  "meta": {
+    "tag": [
+      {
+        "code": "HTEST",
+        "display": "test health data",
+        "system": "http://terminology.hl7.org/CodeSystem/v3-ActReason"
+      }
+    ]
+  },
+  "performer": [
+    {
+      "display": "A. Langeveld",
+      "reference": "Practitioner/f005"
+    }
+  ],
+  "referenceRange": [
+    {
+      "high": {
+        "code": "mmol/L",
+        "system": "http://unitsofmeasure.org",
+        "unit": "mmol/l",
+        "value": 6.2
+      },
+      "low": {
+        "code": "mmol/L",
+        "system": "http://unitsofmeasure.org",
+        "unit": "mmol/l",
+        "value": 3.1
+      }
+    }
+  ],
+  "resourceType": "Observation",
+  "status": "final",
+  "subject": {
+    "display": "P. van de Heuvel",
+    "reference": "Patient/f001"
+  },
+  "text": {
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative with Details</b></p><p><b>id</b>: f001</p><p><b>identifier</b>: 6323 (OFFICIAL)</p><p><b>status</b>: final</p><p><b>code</b>: Glucose [Moles/volume] in Blood <span>(Details : {LOINC code '15074-8' = 'Glucose [Moles/volume] in Blood', given as 'Glucose [Moles/volume] in Blood'})</span></p><p><b>subject</b>: <a>P. van de Heuvel</a></p><p><b>effective</b>: 02/04/2013 9:30:10 AM --&gt; (ongoing)</p><p><b>issued</b>: 03/04/2013 3:30:10 PM</p><p><b>performer</b>: <a>A. Langeveld</a></p><p><b>value</b>: 6.3 mmol/l<span> (Details: UCUM code mmol/L = 'mmol/L')</span></p><p><b>interpretation</b>: High <span>(Details : {http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation code 'H' = 'High', given as 'High'})</span></p><h3>ReferenceRanges</h3><table><tr><td>-</td><td><b>Low</b></td><td><b>High</b></td></tr><tr><td>*</td><td>3.1 mmol/l<span> (Details: UCUM code mmol/L = 'mmol/L')</span></td><td>6.2 mmol/l<span> (Details: UCUM code mmol/L = 'mmol/L')</span></td></tr></table></div>",
+    "status": "generated"
+  },
+  "valueQuantity": {
+    "code": "mmol/L",
+    "system": "http://unitsofmeasure.org",
+    "unit": "mmol/l",
+    "value": 6.3
+  }
+}
+
+
+ITEM 8
+pair_id: official-pair-018
+resource_type: Observation
+input_style: semi_structured
+input_text:
+Observation: Glucose [Moles/volume] in Blood | Status: final | Value: 6.3 mmol/l | Effective start: 2013-04-02T09:30:10+01:00
+target_fhir_json:
+{
+  "code": {
+    "coding": [
+      {
+        "code": "15074-8",
+        "display": "Glucose [Moles/volume] in Blood",
+        "system": "http://loinc.org"
+      }
+    ]
+  },
+  "effectivePeriod": {
+    "start": "2013-04-02T09:30:10+01:00"
+  },
+  "id": "f001",
+  "identifier": [
+    {
+      "system": "http://www.bmc.nl/zorgportal/identifiers/observations",
+      "use": "official",
+      "value": "6323"
+    }
+  ],
+  "interpretation": [
+    {
+      "coding": [
+        {
+          "code": "H",
+          "display": "High",
+          "system": "http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation"
+        }
+      ]
+    }
+  ],
+  "issued": "2013-04-03T15:30:10+01:00",
+  "meta": {
+    "tag": [
+      {
+        "code": "HTEST",
+        "display": "test health data",
+        "system": "http://terminology.hl7.org/CodeSystem/v3-ActReason"
+      }
+    ]
+  },
+  "performer": [
+    {
+      "display": "A. Langeveld",
+      "reference": "Practitioner/f005"
+    }
+  ],
+  "referenceRange": [
+    {
+      "high": {
+        "code": "mmol/L",
+        "system": "http://unitsofmeasure.org",
+        "unit": "mmol/l",
+        "value": 6.2
+      },
+      "low": {
+        "code": "mmol/L",
+        "system": "http://unitsofmeasure.org",
+        "unit": "mmol/l",
+        "value": 3.1
+      }
+    }
+  ],
+  "resourceType": "Observation",
+  "status": "final",
+  "subject": {
+    "display": "P. van de Heuvel",
+    "reference": "Patient/f001"
+  },
+  "text": {
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative with Details</b></p><p><b>id</b>: f001</p><p><b>identifier</b>: 6323 (OFFICIAL)</p><p><b>status</b>: final</p><p><b>code</b>: Glucose [Moles/volume] in Blood <span>(Details : {LOINC code '15074-8' = 'Glucose [Moles/volume] in Blood', given as 'Glucose [Moles/volume] in Blood'})</span></p><p><b>subject</b>: <a>P. van de Heuvel</a></p><p><b>effective</b>: 02/04/2013 9:30:10 AM --&gt; (ongoing)</p><p><b>issued</b>: 03/04/2013 3:30:10 PM</p><p><b>performer</b>: <a>A. Langeveld</a></p><p><b>value</b>: 6.3 mmol/l<span> (Details: UCUM code mmol/L = 'mmol/L')</span></p><p><b>interpretation</b>: High <span>(Details : {http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation code 'H' = 'High', given as 'High'})</span></p><h3>ReferenceRanges</h3><table><tr><td>-</td><td><b>Low</b></td><td><b>High</b></td></tr><tr><td>*</td><td>3.1 mmol/l<span> (Details: UCUM code mmol/L = 'mmol/L')</span></td><td>6.2 mmol/l<span> (Details: UCUM code mmol/L = 'mmol/L')</span></td></tr></table></div>",
+    "status": "generated"
+  },
+  "valueQuantity": {
+    "code": "mmol/L",
+    "system": "http://unitsofmeasure.org",
+    "unit": "mmol/l",
+    "value": 6.3
+  }
+}
+
+
+ITEM 9
+pair_id: official-pair-019
+resource_type: Condition
+input_style: concise_clinical
+input_text:
+Active confirmed ischemic stroke.
+target_fhir_json:
+{
+  "category": [
+    {
+      "coding": [
+        {
+          "code": "encounter-diagnosis",
+          "display": "Encounter Diagnosis",
+          "system": "http://terminology.hl7.org/CodeSystem/condition-category"
+        }
+      ]
+    }
+  ],
+  "clinicalStatus": {
+    "coding": [
+      {
+        "code": "active",
+        "system": "http://terminology.hl7.org/CodeSystem/condition-clinical"
+      }
+    ]
+  },
+  "code": {
+    "coding": [
+      {
+        "code": "422504002",
+        "display": "Ischemic stroke (disorder)",
+        "system": "http://snomed.info/sct"
+      }
+    ],
+    "text": "Stroke"
+  },
+  "id": "stroke",
+  "meta": {
+    "tag": [
+      {
+        "code": "HTEST",
+        "display": "test health data",
+        "system": "http://terminology.hl7.org/CodeSystem/v3-ActReason"
+      }
+    ]
+  },
+  "onsetDateTime": "2010-07-18",
+  "resourceType": "Condition",
+  "subject": {
+    "reference": "Patient/example"
+  },
+  "text": {
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">Ischemic stroke, July 18, 2010</div>",
+    "status": "generated"
+  },
+  "verificationStatus": {
+    "coding": [
+      {
+        "code": "confirmed",
+        "system": "http://terminology.hl7.org/CodeSystem/condition-ver-status"
+      }
+    ]
+  }
+}
+
+
+ITEM 10
+pair_id: official-pair-020
+resource_type: Condition
+input_style: semi_structured
+input_text:
+Condition: Ischemic stroke (disorder) | Clinical status: active | Verification status: confirmed | Onset date: 2010-07-18
+target_fhir_json:
+{
+  "category": [
+    {
+      "coding": [
+        {
+          "code": "encounter-diagnosis",
+          "display": "Encounter Diagnosis",
+          "system": "http://terminology.hl7.org/CodeSystem/condition-category"
+        }
+      ]
+    }
+  ],
+  "clinicalStatus": {
+    "coding": [
+      {
+        "code": "active",
+        "system": "http://terminology.hl7.org/CodeSystem/condition-clinical"
+      }
+    ]
+  },
+  "code": {
+    "coding": [
+      {
+        "code": "422504002",
+        "display": "Ischemic stroke (disorder)",
+        "system": "http://snomed.info/sct"
+      }
+    ],
+    "text": "Stroke"
+  },
+  "id": "stroke",
+  "meta": {
+    "tag": [
+      {
+        "code": "HTEST",
+        "display": "test health data",
+        "system": "http://terminology.hl7.org/CodeSystem/v3-ActReason"
+      }
+    ]
+  },
+  "onsetDateTime": "2010-07-18",
+  "resourceType": "Condition",
+  "subject": {
+    "reference": "Patient/example"
+  },
+  "text": {
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">Ischemic stroke, July 18, 2010</div>",
+    "status": "generated"
+  },
+  "verificationStatus": {
+    "coding": [
+      {
+        "code": "confirmed",
+        "system": "http://terminology.hl7.org/CodeSystem/condition-ver-status"
+      }
+    ]
+  }
+}
+

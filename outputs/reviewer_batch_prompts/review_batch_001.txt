@@ -1,0 +1,550 @@
+You are acting as an external reviewer in a clinical-data-to-FHIR pairing evaluation workflow.
+
+You will review multiple candidate paired samples.
+Apply the same scoring rubric independently to each item.
+Do not compare items with each other.
+Judge each pair only on its own merits.
+
+For each item, return:
+- pair_id
+- faithfulness
+- unsupported_fact
+- omission
+- naturalness
+- context_leakage
+- short_rationale
+- flag_type
+
+Scoring rubric:
+- faithfulness: 1 = faithful, 0 = not faithful
+- unsupported_fact: 1 = yes, 0 = no
+- omission: 1 = yes, 0 = no
+- naturalness: 1 to 5
+- context_leakage: 1 = yes, 0 = no
+
+Allowed flag_type values:
+- none
+- possible_hallucination
+- possible_omission
+- awkward_input
+- context_leakage
+- style_uncertainty
+- other
+
+Review principles:
+1. Only judge alignment between the shown input text and the shown target FHIR JSON.
+2. Do not assume facts from linked resources unless explicitly present in the shown target JSON.
+3. Do not reward unsupported extra detail.
+4. Be conservative about unsupported facts.
+5. Be conservative about omission of core information.
+6. If the target is sparse, do not punish the input for not containing unavailable details.
+
+Return only a JSON array.
+Do not include markdown.
+Do not include any text before or after the JSON array.
+
+ITEM 1
+pair_id: official-pair-001
+resource_type: Patient
+input_style: concise_clinical
+input_text:
+Active patient record for ALBERT BROOKS with identifier AB60001.
+target_fhir_json:
+{
+  "active": true,
+  "id": "ihe-pcd",
+  "identifier": [
+    {
+      "type": {
+        "text": "Internal Identifier"
+      },
+      "value": "AB60001"
+    }
+  ],
+  "meta": {
+    "tag": [
+      {
+        "code": "HTEST",
+        "display": "test health data",
+        "system": "http://terminology.hl7.org/CodeSystem/v3-ActReason"
+      }
+    ]
+  },
+  "name": [
+    {
+      "family": "BROOKS",
+      "given": [
+        "ALBERT"
+      ]
+    }
+  ],
+  "resourceType": "Patient",
+  "text": {
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">Albert Brooks, Id: AB60001</div>",
+    "status": "generated"
+  }
+}
+
+
+ITEM 2
+pair_id: official-pair-002
+resource_type: Patient
+input_style: semi_structured
+input_text:
+Patient name: ALBERT BROOKS | Identifier: AB60001 | Active: true
+target_fhir_json:
+{
+  "active": true,
+  "id": "ihe-pcd",
+  "identifier": [
+    {
+      "type": {
+        "text": "Internal Identifier"
+      },
+      "value": "AB60001"
+    }
+  ],
+  "meta": {
+    "tag": [
+      {
+        "code": "HTEST",
+        "display": "test health data",
+        "system": "http://terminology.hl7.org/CodeSystem/v3-ActReason"
+      }
+    ]
+  },
+  "name": [
+    {
+      "family": "BROOKS",
+      "given": [
+        "ALBERT"
+      ]
+    }
+  ],
+  "resourceType": "Patient",
+  "text": {
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">Albert Brooks, Id: AB60001</div>",
+    "status": "generated"
+  }
+}
+
+
+ITEM 3
+pair_id: official-pair-003
+resource_type: Patient
+input_style: concise_clinical
+input_text:
+Active female patient born 1966-04-04 with identifier 999999999.
+target_fhir_json:
+{
+  "active": true,
+  "birthDate": "1966-04-04",
+  "deceasedBoolean": false,
+  "gender": "female",
+  "id": "proband",
+  "identifier": [
+    {
+      "assigner": {
+        "display": "Boston Massachesetts General Hospital"
+      },
+      "system": "urn:oid:2.16.840.1.113883.6.117",
+      "type": {
+        "text": "Computer-Stored Abulatory Records (COSTAR)"
+      },
+      "use": "usual",
+      "value": "999999999"
+    }
+  ],
+  "meta": {
+    "tag": [
+      {
+        "code": "HTEST",
+        "display": "test health data",
+        "system": "http://terminology.hl7.org/CodeSystem/v3-ActReason"
+      }
+    ]
+  },
+  "resourceType": "Patient",
+  "text": {
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">\n\n      <p>\n\n        <b>Annie Proband</b>: Female, born 1966-04-04\n      </p>\n\n    </div>",
+    "status": "generated"
+  }
+}
+
+
+ITEM 4
+pair_id: official-pair-004
+resource_type: Patient
+input_style: semi_structured
+input_text:
+Patient record | Gender: female | Birth date: 1966-04-04 | Identifier: 999999999 | Active: true
+target_fhir_json:
+{
+  "active": true,
+  "birthDate": "1966-04-04",
+  "deceasedBoolean": false,
+  "gender": "female",
+  "id": "proband",
+  "identifier": [
+    {
+      "assigner": {
+        "display": "Boston Massachesetts General Hospital"
+      },
+      "system": "urn:oid:2.16.840.1.113883.6.117",
+      "type": {
+        "text": "Computer-Stored Abulatory Records (COSTAR)"
+      },
+      "use": "usual",
+      "value": "999999999"
+    }
+  ],
+  "meta": {
+    "tag": [
+      {
+        "code": "HTEST",
+        "display": "test health data",
+        "system": "http://terminology.hl7.org/CodeSystem/v3-ActReason"
+      }
+    ]
+  },
+  "resourceType": "Patient",
+  "text": {
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">\n\n      <p>\n\n        <b>Annie Proband</b>: Female, born 1966-04-04\n      </p>\n\n    </div>",
+    "status": "generated"
+  }
+}
+
+
+ITEM 5
+pair_id: official-pair-005
+resource_type: Patient
+input_style: concise_clinical
+input_text:
+Male patient with birth date 2017-09-05.
+target_fhir_json:
+{
+  "_birthDate": {
+    "extension": [
+      {
+        "url": "http://hl7.org/fhir/StructureDefinition/patient-birthTime",
+        "valueDateTime": "2017-05-09T17:11:00+01:00"
+      }
+    ]
+  },
+  "birthDate": "2017-09-05",
+  "extension": [
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/patient-mothersMaidenName",
+      "valueString": "Everywoman"
+    }
+  ],
+  "gender": "male",
+  "id": "newborn",
+  "meta": {
+    "tag": [
+      {
+        "code": "HTEST",
+        "display": "test health data",
+        "system": "http://terminology.hl7.org/CodeSystem/v3-ActReason"
+      }
+    ]
+  },
+  "multipleBirthInteger": 2,
+  "resourceType": "Patient",
+  "text": {
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative with Details</b></p><p><b>id</b>: newborn</p><p><b>gender</b>: male</p><p><b>birthDate</b>: 05/09/2017</p><p><b>multipleBirth</b>: 2</p></div>",
+    "status": "generated"
+  }
+}
+
+
+ITEM 6
+pair_id: official-pair-006
+resource_type: Patient
+input_style: semi_structured
+input_text:
+Patient record | Gender: male | Birth date: 2017-09-05
+target_fhir_json:
+{
+  "_birthDate": {
+    "extension": [
+      {
+        "url": "http://hl7.org/fhir/StructureDefinition/patient-birthTime",
+        "valueDateTime": "2017-05-09T17:11:00+01:00"
+      }
+    ]
+  },
+  "birthDate": "2017-09-05",
+  "extension": [
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/patient-mothersMaidenName",
+      "valueString": "Everywoman"
+    }
+  ],
+  "gender": "male",
+  "id": "newborn",
+  "meta": {
+    "tag": [
+      {
+        "code": "HTEST",
+        "display": "test health data",
+        "system": "http://terminology.hl7.org/CodeSystem/v3-ActReason"
+      }
+    ]
+  },
+  "multipleBirthInteger": 2,
+  "resourceType": "Patient",
+  "text": {
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative with Details</b></p><p><b>id</b>: newborn</p><p><b>gender</b>: male</p><p><b>birthDate</b>: 05/09/2017</p><p><b>multipleBirth</b>: 2</p></div>",
+    "status": "generated"
+  }
+}
+
+
+ITEM 7
+pair_id: official-pair-007
+resource_type: Observation
+input_style: concise_clinical
+input_text:
+Final body height observation: 66.89999999999999 in.
+target_fhir_json:
+{
+  "category": [
+    {
+      "coding": [
+        {
+          "code": "vital-signs",
+          "display": "Vital Signs",
+          "system": "http://terminology.hl7.org/CodeSystem/observation-category"
+        }
+      ],
+      "text": "Vital Signs"
+    }
+  ],
+  "code": {
+    "coding": [
+      {
+        "code": "8302-2",
+        "display": "Body height",
+        "system": "http://loinc.org"
+      }
+    ],
+    "text": "Body height"
+  },
+  "effectiveDateTime": "1999-07-02",
+  "id": "body-height",
+  "meta": {
+    "profile": [
+      "http://hl7.org/fhir/StructureDefinition/vitalsigns"
+    ],
+    "tag": [
+      {
+        "code": "HTEST",
+        "display": "test health data",
+        "system": "http://terminology.hl7.org/CodeSystem/v3-ActReason"
+      }
+    ]
+  },
+  "resourceType": "Observation",
+  "status": "final",
+  "subject": {
+    "reference": "Patient/example"
+  },
+  "text": {
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative with Details</b></p><p><b>id</b>: body-height</p><p><b>meta</b>: </p><p><b>status</b>: final</p><p><b>category</b>: Vital Signs <span>(Details : {http://terminology.hl7.org/CodeSystem/observation-category code 'vital-signs' = 'Vital Signs', given as 'Vital Signs'})</span></p><p><b>code</b>: Body height <span>(Details : {LOINC code '8302-2' = 'Body height', given as 'Body height'})</span></p><p><b>subject</b>: <a>Patient/example</a></p><p><b>effective</b>: 02/07/1999</p><p><b>value</b>: 66.899999999999991 in<span> (Details: UCUM code [in_i] = 'in_i')</span></p></div>",
+    "status": "generated"
+  },
+  "valueQuantity": {
+    "code": "[in_i]",
+    "system": "http://unitsofmeasure.org",
+    "unit": "in",
+    "value": 66.89999999999999
+  }
+}
+
+
+ITEM 8
+pair_id: official-pair-008
+resource_type: Observation
+input_style: semi_structured
+input_text:
+Observation: Body height | Status: final | Value: 66.89999999999999 in | Effective date: 1999-07-02
+target_fhir_json:
+{
+  "category": [
+    {
+      "coding": [
+        {
+          "code": "vital-signs",
+          "display": "Vital Signs",
+          "system": "http://terminology.hl7.org/CodeSystem/observation-category"
+        }
+      ],
+      "text": "Vital Signs"
+    }
+  ],
+  "code": {
+    "coding": [
+      {
+        "code": "8302-2",
+        "display": "Body height",
+        "system": "http://loinc.org"
+      }
+    ],
+    "text": "Body height"
+  },
+  "effectiveDateTime": "1999-07-02",
+  "id": "body-height",
+  "meta": {
+    "profile": [
+      "http://hl7.org/fhir/StructureDefinition/vitalsigns"
+    ],
+    "tag": [
+      {
+        "code": "HTEST",
+        "display": "test health data",
+        "system": "http://terminology.hl7.org/CodeSystem/v3-ActReason"
+      }
+    ]
+  },
+  "resourceType": "Observation",
+  "status": "final",
+  "subject": {
+    "reference": "Patient/example"
+  },
+  "text": {
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative with Details</b></p><p><b>id</b>: body-height</p><p><b>meta</b>: </p><p><b>status</b>: final</p><p><b>category</b>: Vital Signs <span>(Details : {http://terminology.hl7.org/CodeSystem/observation-category code 'vital-signs' = 'Vital Signs', given as 'Vital Signs'})</span></p><p><b>code</b>: Body height <span>(Details : {LOINC code '8302-2' = 'Body height', given as 'Body height'})</span></p><p><b>subject</b>: <a>Patient/example</a></p><p><b>effective</b>: 02/07/1999</p><p><b>value</b>: 66.899999999999991 in<span> (Details: UCUM code [in_i] = 'in_i')</span></p></div>",
+    "status": "generated"
+  },
+  "valueQuantity": {
+    "code": "[in_i]",
+    "system": "http://unitsofmeasure.org",
+    "unit": "in",
+    "value": 66.89999999999999
+  }
+}
+
+
+ITEM 9
+pair_id: official-pair-009
+resource_type: Observation
+input_style: concise_clinical
+input_text:
+Final body temperature: 36.5 C.
+target_fhir_json:
+{
+  "category": [
+    {
+      "coding": [
+        {
+          "code": "vital-signs",
+          "display": "Vital Signs",
+          "system": "http://terminology.hl7.org/CodeSystem/observation-category"
+        }
+      ],
+      "text": "Vital Signs"
+    }
+  ],
+  "code": {
+    "coding": [
+      {
+        "code": "8310-5",
+        "display": "Body temperature",
+        "system": "http://loinc.org"
+      }
+    ],
+    "text": "Body temperature"
+  },
+  "effectiveDateTime": "1999-07-02",
+  "id": "body-temperature",
+  "meta": {
+    "profile": [
+      "http://hl7.org/fhir/StructureDefinition/vitalsigns"
+    ],
+    "tag": [
+      {
+        "code": "HTEST",
+        "display": "test health data",
+        "system": "http://terminology.hl7.org/CodeSystem/v3-ActReason"
+      }
+    ]
+  },
+  "resourceType": "Observation",
+  "status": "final",
+  "subject": {
+    "reference": "Patient/example"
+  },
+  "text": {
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative with Details</b></p><p><b>id</b>: body-temperature</p><p><b>meta</b>: </p><p><b>status</b>: final</p><p><b>category</b>: Vital Signs <span>(Details : {http://terminology.hl7.org/CodeSystem/observation-category code 'vital-signs' = 'Vital Signs', given as 'Vital Signs'})</span></p><p><b>code</b>: Body temperature <span>(Details : {LOINC code '8310-5' = 'Body temperature', given as 'Body temperature'})</span></p><p><b>subject</b>: <a>Patient/example</a></p><p><b>effective</b>: 02/07/1999</p><p><b>value</b>: 36.5 C<span> (Details: UCUM code Cel = 'Cel')</span></p></div>",
+    "status": "generated"
+  },
+  "valueQuantity": {
+    "code": "Cel",
+    "system": "http://unitsofmeasure.org",
+    "unit": "C",
+    "value": 36.5
+  }
+}
+
+
+ITEM 10
+pair_id: official-pair-010
+resource_type: Observation
+input_style: semi_structured
+input_text:
+Observation: Body temperature | Status: final | Value: 36.5 C | Effective date: 1999-07-02
+target_fhir_json:
+{
+  "category": [
+    {
+      "coding": [
+        {
+          "code": "vital-signs",
+          "display": "Vital Signs",
+          "system": "http://terminology.hl7.org/CodeSystem/observation-category"
+        }
+      ],
+      "text": "Vital Signs"
+    }
+  ],
+  "code": {
+    "coding": [
+      {
+        "code": "8310-5",
+        "display": "Body temperature",
+        "system": "http://loinc.org"
+      }
+    ],
+    "text": "Body temperature"
+  },
+  "effectiveDateTime": "1999-07-02",
+  "id": "body-temperature",
+  "meta": {
+    "profile": [
+      "http://hl7.org/fhir/StructureDefinition/vitalsigns"
+    ],
+    "tag": [
+      {
+        "code": "HTEST",
+        "display": "test health data",
+        "system": "http://terminology.hl7.org/CodeSystem/v3-ActReason"
+      }
+    ]
+  },
+  "resourceType": "Observation",
+  "status": "final",
+  "subject": {
+    "reference": "Patient/example"
+  },
+  "text": {
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative with Details</b></p><p><b>id</b>: body-temperature</p><p><b>meta</b>: </p><p><b>status</b>: final</p><p><b>category</b>: Vital Signs <span>(Details : {http://terminology.hl7.org/CodeSystem/observation-category code 'vital-signs' = 'Vital Signs', given as 'Vital Signs'})</span></p><p><b>code</b>: Body temperature <span>(Details : {LOINC code '8310-5' = 'Body temperature', given as 'Body temperature'})</span></p><p><b>subject</b>: <a>Patient/example</a></p><p><b>effective</b>: 02/07/1999</p><p><b>value</b>: 36.5 C<span> (Details: UCUM code Cel = 'Cel')</span></p></div>",
+    "status": "generated"
+  },
+  "valueQuantity": {
+    "code": "Cel",
+    "system": "http://unitsofmeasure.org",
+    "unit": "C",
+    "value": 36.5
+  }
+}
+
